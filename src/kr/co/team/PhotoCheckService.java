@@ -25,7 +25,7 @@ import android.util.Log;
 
 public class PhotoCheckService extends Service implements Runnable{
 	// 내 담벼락 게시물 정보가 들어있는 uri
-	private String requestUrl = "http://"+ BaseActivity.SERVER_IP + "/pic_project/check_upload.php";
+	private String requestUrl = "http://"+ BaseActivity.SERVER_IP + "/solo_pic_project/check_upload.php";
 	private Handler handler = new Handler();	// 업데이트 핸들러	
 	private int repeatTime;						// 업데이트 주기
 	private SharedPreferences mPrefs; 

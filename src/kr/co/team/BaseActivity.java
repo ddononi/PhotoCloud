@@ -28,7 +28,7 @@ public class BaseActivity extends Activity {
     public static final String FTP_NAME = "jng0419";			// ************해당 ftp id 로 수정***********************// 
     public static final String FTP_PASSWORD = "qwerty01";		// ************해당 ftp pass 로 수정***********************// 
     public static final int MAX_SERVER_CONNECT_COUNT = 5;	//	최대 서버 연결 회수
-    public static final String FTP_PATH = "/www/pic_project/image_storage/";	//	ftp path
+    public static final String FTP_PATH = "/www/solo_pic_project/image_storage/";	//	ftp path
     
     /* Preferences setting */
     public static final String PREFERENCE = "Prefs";

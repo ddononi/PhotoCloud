@@ -40,7 +40,7 @@ public class GalleryActivity extends BaseActivity {
 		mWebView.setWebViewClient(new WebViewClientClass());		
 		SharedPreferences defaultSharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 		String tag = defaultSharedPref.getString("tag_filter", "ÀüÃ¼");		
-		mWebView.loadUrl("http://ddononi.cafe24.com/pic_project/photoswipe/index.html?tag=" + tag);
+		mWebView.loadUrl("http://jng0419.cafe24.com/pic_project/photoswipe/index.html?tag=" + tag);
 	}		
 	
 	

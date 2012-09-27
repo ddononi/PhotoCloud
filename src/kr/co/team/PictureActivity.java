@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Vector;
 
 import kr.co.myutils.MyUtils;
@@ -22,6 +24,7 @@ import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -35,6 +38,7 @@ import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
+import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
@@ -81,6 +85,7 @@ public class PictureActivity extends BaseActivity {
 	String[] receiveFiles = new String[MAX_ATTACH];
 	String latitude = "";		// 위도
 	String longitude = "";		// 경도
+	String address = "";		// 좌표변환주소
 	String privacyAllow;		// 좌표 수락 여부
 	Location location;			
 	SharedPreferences settings = null;	// 공유환경
@@ -478,6 +483,8 @@ public class PictureActivity extends BaseActivity {
 			} else {
 				latitude = String.valueOf(array[0]);
 				longitude = String.valueOf(array[1]);
+				address = getAddressFromPoint(); 		
+						
 			}
 			privacyAllow = "Y";
 			fileUpload();
@@ -504,6 +511,31 @@ public class PictureActivity extends BaseActivity {
 
 		}
 	}
+	
+	/**
+	 *  좌표로 주소 얻기
+	 * @return
+	 */
+	private String getAddressFromPoint() {
+		Geocoder gc = new Geocoder(this,Locale.getDefault());
+		List<Address> addresses = null;
+		try {
+			addresses = gc.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String addressStr = "현위치";		// 디폴트 주소명
+		if(addresses != null && addresses.size()>0) {	// 주소가 있으면
+			// 첫번째 주소 컬렉션을 얻은후
+			Address address = addresses.get(0);
+			// 대한민국문자는 없애주고 실제 주소만 가져온다. 
+			addressStr = address.getAddressLine(0).replace("대한민국", "").trim();
+			return addressStr;
+		}			
+		
+		return "";
+	}		
 
 	/**
 	 * 파일 업로드 실행 처리
@@ -879,8 +911,9 @@ public class PictureActivity extends BaseActivity {
 	            vars.add(new BasicNameValuePair("device_id", di.getMyDeviceID()));	
 	            vars.add(new BasicNameValuePair("tag", tag));	// 태그            
 	            vars.add(new BasicNameValuePair("message", message));	// 메세지
+	            vars.add(new BasicNameValuePair("address", address));	// 주소	            
 	            
-	            String url = "http://" + SERVER_IP + "/pic_project/insert.php"; 
+	            String url = "http://" + SERVER_IP + "/solo_pic_project/insert.php"; 
 	           //+ URLEncodedUtils.format(vars, null);
 	            
 	            HttpPost request = new HttpPost(url);	
@@ -898,10 +931,8 @@ public class PictureActivity extends BaseActivity {
 	    				  result = true;
 	                }
 	            } catch (ClientProtocolException e) {
-	                Log.e(DEBUG_TAG, "Failed to get playerId (protocol): ", e);
 	                result = false;
 	            } catch (IOException e) {
-	                Log.e(DEBUG_TAG, "Failed to get playerId (io): ", e);
 	                result = false;
 	            }
 				
