@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">포토클라우드</string>
+    <string name="app_help">도움말은 이곳에..</string>
+    
+    <!--  업데이트 시간 설정값 -->    
+    <string name="default_value_list_preference">10</string>    
+    <string-array name="time_list_preference">
+        <item>1시간</item>
+        <item>30분</item>
+        <item>10분</item>
+        <item>5분</item>
+        <item>3분</item>
+    </string-array>
+    
+    <string-array name="time_list_value_preference">
+        <item>60</item>
+        <item>30</item>
+        <item>10</item>
+        <item>5</item>
+        <item>3</item>
+    </string-array>
+
+    <string name="default_tag_list_preference">전체</string>    
+    <string-array name="tag_list_preference">
+        <item>전체</item>        
+        <item>풍경</item>
+        <item>인물</item>
+        <item>음식</item>
+        <item>여행</item>
+        <item>모임</item>
+    </string-array>
+      
+    <string-array name="tag_value_list_preference">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>        
+            
+</resources>

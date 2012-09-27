@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="kr.co.team"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="9" />
+
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name=".StartActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+		<activity android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:name=".GalleryActivity"></activity>        
+        <activity android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:name="PictureActivity"></activity>
+        <activity android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:name="ResultActivity"></activity>
+		<activity android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:name="SettingActivity"></activity>        
+
+        <receiver android:name=".PhotoReceiver" />
+        <service android:name=".PhotoCheckService" />  
+                
+        <!--  부팅 리시버 -->   
+		<receiver android:name=".BootBroadCastReceiver">
+	        <intent-filter>
+	       		<action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.LAUNCHER" />
+	        </intent-filter>
+        </receiver>		            
+           
+    </application>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.INTERNET" />  
+	<uses-permission android:name="android.permission.CALL_PHONE" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />    
+</manifest>

@@ -1,0 +1,52 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="알림설정" >
+
+        <CheckBoxPreference
+            android:key="alarm"
+            android:defaultValue="true"
+            android:summary="사진이 업로드 되면 알림을 설정합니다."
+            android:title="알람설정" />
+
+        <ListPreference
+            android:dialogTitle="업데이트"
+            android:entries="@array/time_list_preference"
+            android:entryValues="@array/time_list_value_preference"
+            android:key="repeat"
+            android:defaultValue="@string/default_value_list_preference"
+            android:summary="업로드 체크 업데이트주기를 설정합니다."
+            android:title="업데이트간격" />
+        
+    </PreferenceCategory>
+
+
+    <PreferenceCategory android:title="알람설정" >
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="sound"
+            android:summary="알람이 발생하면 사운드로 알려줌"
+            android:title="소리알람" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="vibration"
+            android:summary="알람이 발생하면  진동으로 알려줌"
+            android:title="진동알람" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="태크설정" >
+        <ListPreference
+            android:dialogTitle="업데이트"
+            android:entries="@array/tag_list_preference"
+            android:entryValues="@array/tag_list_preference"
+            android:key="tag_filter"
+            android:defaultValue="@string/default_tag_list_preference"
+            android:summary="업로드태그를 선택합니다."
+            android:title="태그선택" />
+    </PreferenceCategory>    
+    <PreferenceCategory android:title="버젼정보" >
+        <PreferenceScreen
+            android:key="version"
+            android:summary="위치기반 포토 클라우드"
+            android:title="위치기반 포토 클라우드" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

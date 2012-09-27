@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="location_allow">
+        <item>승인</item>
+        <item>미승인</item>
+        <item>현재위치보기</item>
+    </string-array>
+</resources>
